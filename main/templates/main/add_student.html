@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+  .form-container {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .form-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-container input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  .form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="form-container">
+  <h2>Add Student</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="username">Username</label>
+    <input type="text" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+
+    <label for="roll_no">Roll No</label>
+    <input type="text" name="roll_no" required>
+
+    <label for="department">Department</label>
+    <input type="text" name="department" required>
+
+    <button type="submit">Add Student</button>
+  </form>
+</div>
+{% endblock %}

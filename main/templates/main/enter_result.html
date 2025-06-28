@@ -1,0 +1,77 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<style>
+  .result-form {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .result-form h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .result-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+
+  .result-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+
+  .result-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .result-form button:hover {
+    background-color: #218838;
+  }
+
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+</style>
+
+<div class="result-form">
+  <h2>Enter Result (Admin)</h2>
+
+  {% if error %}
+    <div class="error-message">{{ error }}</div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <label for="username">Student Username:</label>
+    <input type="text" name="username" required>
+
+    <label for="subject">Subject:</label>
+    <input type="text" name="subject" required>
+
+    <label for="marks">Marks:</label>
+    <input type="number" name="marks" min="0" max="100" required>
+
+    <button type="submit">Submit Result</button>
+  </form>
+</div>
+{% endblock %}
